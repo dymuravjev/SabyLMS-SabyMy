@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ececee">
+  <meta name="description" content="Интерактивный мобильный прототип Saby My: обучение, единая лента курсов и история обучения.">
+  <title>Saby My — обучение</title>
+  <link rel="preload" href="./assets/fonts/SFUIDisplay-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./webview.css">
+</head>
+<body>
+  <div class="workbench">
+    <aside class="prototype-panel" aria-label="Управление прототипом">
+      <header class="inspector-header"><span class="inspector-device" aria-hidden="true">▯</span><span>375×812&nbsp; телефон</span></header>
+      <fieldset class="inspector-group"><legend class="sr-only">Наполнение</legend>
+        <label><input type="radio" name="density" value="empty">Пустое</label>
+        <label><input type="radio" name="density" value="typical" checked>Типовое представление</label>
+        <label><input type="radio" name="density" value="maximum">Макс. заполненное представление</label>
+      </fieldset>
+      <fieldset class="inspector-group"><legend>Виджет</legend>
+        <label><input type="radio" name="screen" value="widget-start" checked>Учусь — начало ленты</label>
+        <label><input type="radio" name="screen" value="widget-boundary">Переход между группами</label>
+        <label><input type="radio" name="screen" value="widget-available">Еще курсы</label>
+        <label><input type="radio" name="screen" value="widget-end"><span id="end-state-caption">Конец ленты</span></label>
+      </fieldset>
+      <fieldset class="inspector-group"><legend>Приложение</legend>
+        <label><input type="radio" name="screen" value="notifications">Уведомления об обучении</label>
+      </fieldset>
+      <fieldset class="inspector-group"><legend>Встроенный браузер</legend>
+        <label><input type="radio" name="screen" value="program">Курс · Программа</label>
+        <label><input type="radio" name="screen" value="classes">Курс · Занятия</label>
+        <label><input type="radio" name="screen" value="assignments">Курс · Задания</label>
+        <label><input type="radio" name="screen" value="channel">Курс · Канал</label>
+        <label><input type="radio" name="screen" value="history-registry">Реестр пройденных курсов</label>
+        <label><input type="radio" name="screen" value="available-registry">Реестр доступных курсов</label>
+        <label><input type="radio" name="screen" value="landing">Лендинг курса</label>
+        <label><input type="radio" name="screen" value="registration">Запись учеников</label>
+      </fieldset>
+    </aside>
+
+    <main class="phone" aria-label="Мобильный экран Saby My">
+      <div class="status-bar" aria-hidden="true"><span>9:41</span><div class="status-icons" id="status-icons"></div></div>
+      <div class="app-scroll" id="app-scroll">
+        <header class="app-header">
+          <div class="app-logo" aria-label="Saby My"><svg class="saby-symbol" viewBox="0 0 30 36" aria-hidden="true"><path d="M1 2 15 13 28 5 17 20 6 35 11 17Z" fill="currentColor"/></svg><span>saby<b>my</b></span></div>
+          <div class="header-actions"><button class="notification-button" data-action="notifications" aria-label="Уведомления, 1 новое"><span id="bell-icon"></span><span class="notification-badge">1</span></button><button class="profile-button" data-action="profile" aria-label="Мой профиль"><span class="portrait portrait-owner"></span></button></div>
+        </header>
+
+        <section class="quick-actions" aria-labelledby="quick-title">
+          <div class="section-title"><h2 id="quick-title">Оформить</h2><button id="toggle-quick" aria-label="Свернуть действия" aria-expanded="true"><span id="collapse-icon"></span></button></div>
+          <div class="quick-grid" id="quick-grid">
+            <button class="quick-tile" data-service="Отпуск"><span class="service-art art-palm"></span><span class="tile-title">Отпуск</span><span class="tile-subtitle">доступно 17 дн</span></button>
+            <button class="quick-tile" data-service="Отгул"><span class="service-art art-cactus"></span><span class="tile-title">Отгул</span></button>
+            <button class="quick-tile" data-service="Заявление"><span class="service-art art-document"></span><span class="pending-badge">↻ 1</span><span class="tile-title">Заявление</span><span class="tile-subtitle orange">Не запущено: 1</span></button>
+            <button class="quick-tile compact" data-service="Больничный"><span class="service-art art-medicine"></span><span class="tile-title">Больничный</span></button>
+            <button class="quick-tile compact" data-service="Командировка"><span class="service-art art-plane"></span><span class="tile-title">Командиро...</span></button>
+            <button class="quick-tile compact" data-service="Переработка"><span class="service-art art-people"></span><span class="tile-title">Перерабо...</span></button>
+          </div>
+        </section>
+
+        <section class="learning" id="learning" aria-label="Курсы и обучение">
+          <div class="learning-header" id="learning-header">
+            <button class="learning-heading current-heading" id="current-heading" aria-label="Перейти к моим курсам"><span>Учусь</span><span class="heading-count" id="current-count">2</span></button>
+            <button class="learning-heading more-heading" id="more-heading" aria-label="Перейти к доступным курсам"><span>Еще курсы</span><span class="heading-count" id="available-count">17</span></button>
+          </div>
+          <div class="course-rail" id="course-rail" tabindex="0" role="region" aria-label="Горизонтальная лента курсов. Используйте стрелки для прокрутки."></div>
+        </section>
+
+        <button class="vacation-card" data-action="vacation"><span class="vacation-title"><strong>Отпуск</strong><span>доступно 19 дн</span></span><span class="vacation-date">30 ноя – 17 дек</span><span class="panel-chevron" id="vacation-chevron"></span></button>
+        <button class="salary-card" data-action="salary"><span>Зарплата 15 октября</span><span id="salary-chevron"></span></button>
+      </div>
+      <nav class="bottom-nav" aria-label="Основная навигация" id="bottom-nav"></nav>
+      <div class="home-indicator" aria-hidden="true"><span></span></div>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    </main>
+  </div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

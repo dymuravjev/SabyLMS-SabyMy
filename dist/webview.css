@@ -1,0 +1,213 @@
+@font-face {font-family:'SF UI Display';src:url('./assets/fonts/SFUIDisplay-Light.ttf') format('truetype');font-weight:300;font-style:normal;font-display:swap}
+.sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+:root {--inspector-width:clamp(170px,calc((100vw - 375px)/2 - 40px),275px)}
+.workbench {padding-right:calc(var(--inspector-width) + 32px)}
+.prototype-panel {top:10px;bottom:10px;right:16px;transform:none;width:var(--inspector-width);background:#fff;border:1px solid #e4e5e9;border-radius:4px;padding:5px 4px;text-align:left;overflow-y:auto;scrollbar-width:thin;color:#8992ae}
+.inspector-header {height:50px;display:flex;flex-direction:column;gap:6px;padding:1px 7px;font-size:12px;color:#8992ae}
+.inspector-device {height:23px;width:40px;display:grid;place-items:center;background:#f8f9fc;border:1px solid #eef0f5;border-radius:15px;font-size:18px;line-height:20px}
+.inspector-group {margin:5px 0 0;border:0;border-radius:7px;padding:8px 8px 9px;background:#fafafa;min-width:0}
+.inspector-group legend:not(.sr-only) {font-size:11px;padding:12px 0 0;color:#a1a6b2;letter-spacing:.3px}
+.inspector-group label {font-size:13px;line-height:22px;display:flex;align-items:center;gap:5px;cursor:pointer;white-space:normal}
+.inspector-group label:has(input:checked) {color:#111}
+.inspector-group input {appearance:none;-webkit-appearance:none;margin:0;width:11px;height:11px;border:1px solid #d1d7e2;border-radius:50%;background:#fff;flex-shrink:0;position:relative}
+.inspector-group input:checked {border-color:#ff7435}
+.inspector-group input:checked::after {content:'';position:absolute;inset:1px;border-radius:50%;background:#ff7435}
+.inspector-group input:focus-visible {outline:2px solid #83baff;outline-offset:3px}
+.hrm-cover {height:auto;top:-100px}
+.empty-learning-card {width:var(--card-width);min-width:var(--card-width);height:var(--card-height);border-radius:14px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;gap:10px}
+.empty-learning-card svg {width:32px;height:32px;color:#a2b8d8}
+.empty-learning-card strong {font-size:16px;font-weight:500}
+.empty-learning-card p {font-size:13px;line-height:18px;color:#8c96ab;margin:0}
+.empty-learning-card button {font-size:14px;color:#0783ff}
+.phone.has-webview .status-bar {background:var(--screen-bg)}
+.embedded-browser {position:absolute;inset:44px 0 0;z-index:30;background:#ececee;display:flex;flex-direction:column;overflow:hidden;color:#000;--lms-orange:#ff650f;--lms-blue:#424e87}
+.embedded-browser[hidden] {display:none}
+.browser-chrome {height:52px;flex-shrink:0;background:#ececee;display:flex;align-items:center;gap:10px;padding:0 12px;position:relative;z-index:5}
+.browser-exit {height:30px;width:24px;display:grid;place-items:center;color:#ff7738;flex-shrink:0}
+.browser-exit svg {height:24px;width:24px;stroke-width:1.8}
+.browser-brand {display:flex;align-items:center;min-height:30px}
+.browser-brand strong {font-size:20px;line-height:24px;font-weight:700;letter-spacing:-.15px}
+.browser-content {min-height:0;flex:1;overflow:hidden;position:relative}
+.browser-home {height:25px;position:absolute;bottom:0;left:0;right:0;z-index:45;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px;pointer-events:none;background:transparent}
+.browser-home span {height:5px;width:139px;border-radius:4px;background:#000}
+.toast {z-index:90}
+.lms-course-page {height:100%;display:flex;flex-direction:column;background:#ececee}
+.lms-course-hero {height:212px;flex-shrink:0;position:relative;background:linear-gradient(145deg,#f9f7ff,#f4edff);padding-top:12px;overflow:hidden}
+.lms-course-hero::before {content:'';position:absolute;inset:-8px -15px auto;height:132px;background-image:url('./assets/registry-reference.png');background-size:405px 877px;background-position:-6px -165px;background-repeat:no-repeat;opacity:.45;mask-image:linear-gradient(#000 0%,#0009 65%,transparent 100%);pointer-events:none}
+.lms-course-hero>* {position:relative}
+.lms-course-title {font-size:30px;line-height:36px;letter-spacing:-.4px;font-weight:700;margin:0 12px;height:72px;overflow:hidden}
+.lms-author {display:flex;align-items:center;gap:8px;height:48px;margin:6px 12px 0}
+.lms-author-photo {height:48px;width:48px;flex-shrink:0;border-radius:6px;background-image:url('./assets/program-reference.png');background-size:375px 812px;background-position:-12px -187px}
+.lms-author strong {font-size:18px;line-height:22px;font-weight:400;letter-spacing:-.1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lms-course-tabs {display:flex;gap:24px;height:40px;white-space:nowrap;overflow-x:auto;scrollbar-width:none;margin-top:7px;padding:0 12px;overscroll-behavior:contain}
+.lms-course-tabs::-webkit-scrollbar {display:none}
+.lms-course-tab {font-size:18px;line-height:22px;flex-shrink:0;color:#34417b;height:40px;border-bottom:3px solid transparent;padding-bottom:9px;display:flex;align-items:center;font-weight:400}
+.lms-course-tab.active {color:#ff5705;border-bottom-color:#ff5705;border-radius:0 0 2px 2px}
+.lms-course-progress {height:24px;display:flex;align-items:center;gap:6px;font-size:14px;padding:2px 12px 0;line-height:18px}
+.lms-course-progress .score {color:#8994b0;margin-left:3px}
+.segmented-progress {display:flex;gap:1px;width:49px;height:8px}
+.segmented-progress i {display:block;flex:1;background:#d5dadd}
+.segmented-progress i.done {background:#09a836}
+.lms-tools {height:56px;padding:0 12px;display:flex;align-items:center;gap:12px;flex-shrink:0;background:#ececee}
+.lms-tools button {display:grid;place-items:center;color:#71809d;flex-shrink:0}
+.lms-tools .tool-folder {width:30px;height:32px}
+.lms-tools .tool-folder svg {height:22px;width:22px;stroke-width:1}
+.lms-search {flex:1;min-width:0;border:0;background:#fff;border-radius:18px;height:28px;padding:3px 12px;font-size:16px;line-height:22px;outline:none;color:#394360}
+.lms-search::placeholder {color:#afb7ca;opacity:1}
+.lms-search:focus {box-shadow:0 0 0 1px #bacbe8}
+.lms-tools .tool-more {height:32px;width:32px;background:#fff;border-radius:50%;color:#333}
+.lms-tools .tool-more svg {height:23px;width:23px;stroke-width:2.7}
+.lms-tools .tool-filter {height:32px;width:28px}
+.lms-tools .tool-layout {height:32px;width:32px}
+.lms-tools .tool-filter svg,.lms-tools .tool-layout svg {height:22px;width:22px;stroke-width:1.1}
+.lms-tab-content {flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+.lms-tab-content::-webkit-scrollbar {display:none}
+.program-list {padding:0 13px 30px}
+.program-article {height:264px;background:#fff;border-radius:8px;position:relative;padding:54px 12px 0;margin-bottom:4px;overflow:hidden;cursor:pointer}
+.program-article h2 {font-size:36px;line-height:44px;letter-spacing:-.2px;font-weight:700;margin:0}
+.program-check {position:absolute;top:27px;right:14px;color:#3da35c;font-size:23px;font-weight:300;line-height:23px}
+.program-expand {font-size:14px;color:#8a96ad;position:absolute;right:16px;bottom:36px;line-height:18px}
+.program-article-bottom {position:absolute;left:14px;right:16px;bottom:5px;display:flex;align-items:center;justify-content:space-between;height:20px;font-size:14px;color:#a6aaa8}
+.program-article-bottom svg {height:18px;width:18px;color:#d0d5d5}
+.program-article.unpublished {height:278px;padding-top:72px}
+.unpublished-notice {position:absolute;top:5px;left:14px;background:#f7f7f7;color:#9ca6ae;display:flex;align-items:center;gap:3px;font-size:14px;line-height:22px;border-radius:5px;padding:0 3px 0 1px}
+.unpublished-notice svg {width:17px;height:17px;stroke-width:1.4;color:#c4d0d1}
+.unpublished .program-check {top:46px}
+.article-tiny-icon {position:absolute;right:42px;top:48px;color:#abb2b2}
+.article-tiny-icon svg {width:15px;height:15px}
+.assignment-list {padding:2px 4px 30px}
+.assignment-section {height:41px;display:flex;align-items:center;padding:0 12px;background:#f8f8f8;font-size:18px;font-weight:600;color:#53689d;margin:0 0 5px}
+.assignment-card {min-height:72px;background:#fff;border-radius:9px;margin-bottom:6px;padding:6px 12px;position:relative;text-align:left;display:block;width:100%;overflow:hidden}
+.assignment-title {display:block;font-size:16px;line-height:20px;color:#53659d;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.assignment-desc,.assignment-meta {display:block;font-size:14px;line-height:20px;color:#111}
+.assignment-desc.clamp-two {display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.assignment-card.final-test {height:94px;margin-bottom:4px}
+.assignment-preview {position:absolute;top:9px;right:92px;font-size:12px;color:#c9c9c9}
+.assignment-card.checked-task .assignment-title {max-width:220px}
+.assignment-pass {position:absolute;top:7px;right:12px;border-radius:15px;padding:1px 10px 2px;background:#0bad2d;color:white;font-size:14px;line-height:18px;font-weight:600}
+.assignment-card.checked-task .assignment-desc {margin-top:3px}
+.lms-empty {padding:50px 24px;color:#8c98ac;text-align:center;font-size:16px;line-height:23px}
+.lms-empty svg {margin:0 auto 16px;width:38px;height:38px;color:#b6c6df}
+.lms-empty strong {display:block;color:#485772;font-size:18px;font-weight:500;margin-bottom:7px}
+.registry-page {height:100%;display:flex;flex-direction:column;background:#ececee}
+.registry-scroll {flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:0 6px 28px}
+.registry-scroll::-webkit-scrollbar {display:none}
+.registry-card {height:331px;position:relative;border-radius:12px;overflow:hidden;margin-bottom:6px;background:#e3d1fc;cursor:pointer}
+.registry-card.accounting {background:#e3f3ff}
+.registry-card.extra-registry {background:#edf4ff}
+.registry-cover {height:132px;background-image:url('./assets/registry-reference.png');background-size:375px 812px;background-position:-6px -153px}
+.accounting .registry-cover {background-position:-6px -489px}
+.registry-body {height:199px;position:relative;padding:4px 12px 0}
+.registry-title-line {display:flex;gap:7px;align-items:center;height:29px}
+.registry-course-title {font-size:22px;line-height:27px;font-weight:400;letter-spacing:-.25px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;margin:0}
+.registry-price {flex-shrink:0;font-size:18px;line-height:26px;font-weight:700}
+.registry-duration {position:absolute;top:34px;left:12px;right:12px;font-size:16px;line-height:20px;display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden}
+.registry-duration svg {height:15px;width:15px;stroke-width:1.3}
+.registry-description {position:absolute;top:60px;left:12px;right:12px;font-size:16px;line-height:19px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin:0}
+.registry-teacher {position:absolute;top:112px;left:12px;right:12px;display:flex;align-items:center;gap:10px;font-size:16px;line-height:20px}
+.registry-avatar {height:40px;width:40px;flex-shrink:0;border-radius:6px;background-image:url('./assets/registry-reference.png');background-size:375px 812px;background-position:-18px -396px}
+.registry-footer {position:absolute;bottom:0;left:12px;right:12px;height:41px;border-top:1px solid #bac9db55;display:flex;align-items:center;gap:5px;font-size:14px;line-height:18px}
+.registry-footer>svg {height:16px;width:16px;stroke-width:1}
+.registry-decorations {margin-left:auto;display:flex;align-items:center;gap:8px;color:#91b5db}
+.registry-decorations span {width:23px;height:23px;border-radius:50%;background:#f8fcff;display:grid;place-items:center}
+.registry-decorations svg {height:21px;width:21px;stroke-width:1}
+.registry-decorations span:last-child {background:#909aaa;color:#fff;font-size:14px}
+.registry-page.compact-registry .registry-cover {height:70px}
+.registry-page.compact-registry .registry-card {height:269px}
+.registry-heading {font-size:16px;color:#8995ac;margin:0 0 12px;display:none}
+.landing-page {height:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;background:#f4f4f4}
+.landing-page::-webkit-scrollbar {display:none}
+.landing-photo {height:300px;background-image:url('./assets/landing-reference.png');background-size:375px 812px;background-position:0 -96px;position:relative}
+.landing-settings {position:absolute;z-index:2;top:4px;right:8px;width:40px;height:40px;border-radius:12px;background:#fff;color:#7e8792;border:1px solid #eceef1;box-shadow:0 2px 8px #26334a0a;display:grid;place-items:center}
+.landing-settings svg {height:23px;width:23px;stroke-width:1.5}
+.landing-main {padding:16px 16px 40px}
+.landing-photo::after {content:"";position:absolute;inset:35% 0 0;background:linear-gradient(180deg,#fff0 0%,#ffffffb3 50%,#fffffff5 100%);pointer-events:none}
+.landing-title {position:absolute;z-index:1;left:16px;right:16px;bottom:18px;font-size:24px;line-height:28px;font-weight:600;letter-spacing:-.3px;color:#111;margin:0;text-wrap:balance}
+.landing-company {margin-top:0;display:flex;gap:6px;height:36px;position:relative;align-items:center}
+.company-photo {height:36px;width:36px;border-radius:4px;flex-shrink:0;background-image:url('./assets/landing-reference.png');background-size:375px 812px;background-position:-16px -449px}
+.company-text {font-size:16px;line-height:18px;min-width:0;white-space:nowrap;overflow:hidden}
+.company-text span {display:block;overflow:hidden;text-overflow:ellipsis}
+.company-text span:first-child {color:#15549d;padding-right:48px}
+.company-tools {position:absolute;right:0;top:0;display:flex;gap:3px;background:#f4f4f4}
+.company-tools button {width:22px;height:22px;display:grid;place-items:center;background:#fff;color:#14519b;border-radius:2px}
+.company-tools svg {width:18px;height:18px;stroke-width:1.2}
+.landing-facts {display:flex;align-items:center;gap:18px;margin:17px 4px 0;font-size:20px;line-height:28px;font-weight:300;color:#8795a5}
+.landing-facts span,.landing-online {display:flex;gap:7px;align-items:center}
+.landing-facts svg {height:23px;width:23px;color:#ff763b;stroke-width:1.6}
+.landing-facts span:last-child svg {width:18px}
+.landing-online {margin:12px 4px 0;font-size:20px;font-weight:300;color:#8795a5;line-height:28px}
+.landing-online svg {width:23px;height:23px;color:#ff763b;stroke-width:1}
+.landing-price-panel {margin:26px 0 0 4px;background:#eaeaea;border-radius:14px;height:117px;padding:12px 14px}
+.landing-price {display:flex;align-items:center;gap:5px;font-size:24px;line-height:29px;font-weight:300}
+.landing-price svg {width:22px;height:22px;color:#ff763b;stroke-width:1}
+.landing-signup {height:47px;display:block;width:249px;max-width:100%;background:#ff7635;color:#fff;box-shadow:0 4px 7px #dd6b3526;border-radius:25px;margin:17px auto 0;font-size:24px;line-height:29px;font-weight:400}
+.landing-teachers h2 {font-size:20px;font-weight:600;margin:27px 0 18px;line-height:24px}
+.landing-teacher {display:flex;align-items:center;gap:18px;font-size:24px;line-height:28px}
+.landing-teacher p {font-size:16px;color:#8c96a6;margin:6px 0}
+.elizabeth-photo {background-image:url('./assets/registration-reference.png');background-repeat:no-repeat;flex-shrink:0;width:48px;height:48px;border-radius:50%;background-size:375px 812px;background-position:-18px -266px}
+.landing-teacher .elizabeth-photo {width:80px;height:80px;background-size:625px 1353.333px;background-position:-30px -443.333px}
+.registration-panel {position:absolute;inset:107px 0 0;z-index:35;display:flex;flex-direction:column;background:#f7f7f7;border-radius:16px 16px 0 0;box-shadow:0 -1px 4px #0003;overflow:hidden;outline:none!important}
+.registration-panel[hidden] {display:none}
+.registration-grip {height:19px;flex-shrink:0;background:#fff;display:grid;place-items:center;cursor:pointer}
+.registration-grip span {width:40px;height:4px;border-radius:3px;background:#d4d4d4}
+.registration-scroll {flex:1;min-height:0;overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;padding-bottom:37px}
+.registration-scroll::-webkit-scrollbar {display:none}
+.registration-title {font-size:30px;line-height:36px;font-weight:300;margin:7px 12px 10px;letter-spacing:-.3px}
+.registration-info {margin:0 12px;display:grid;gap:8px}
+.registration-info-row {height:60px;background:#fff;border-radius:10px;display:flex;align-items:center;gap:8px;text-align:left;padding:6px;min-width:0;width:100%;font-size:18px;line-height:22px;font-weight:300}
+.registration-info-text {min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.registration-info-text strong {display:block;font-weight:300;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.registration-info-text small {font-size:18px;color:#949eae;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.registration-info-text em {font-style:normal;color:#949eae}
+.registration-info-icon {width:48px;height:48px;display:grid;place-items:center;border-radius:50%;background:#f7f7f7;color:#ff763b;flex-shrink:0}
+.registration-info-icon svg {height:26px;width:26px;stroke-width:1}
+.registration-students {position:relative;border-radius:16px 16px 0 0;margin-top:2px;background:#f7f7f7;border-top:1px solid #e3e3e3;box-shadow:0 -2px 5px #00000006;padding:7px 12px 0}
+.students-heading {display:flex;align-items:center;gap:13px;height:32px;margin:0 0 12px;color:#888;font-size:16px;font-weight:300}
+.add-student {width:32px;height:32px;border-radius:50%;background:#eee;display:grid;place-items:center;color:#111}
+.add-student svg {height:24px;width:24px;stroke-width:1.6}
+.student-card {height:198px;background:#fff;border-radius:8px;position:relative;margin-bottom:8px;padding:6px 48px 6px 76px}
+.student-index {position:absolute;top:12px;left:16px;height:48px;width:48px;background:#fbe0e4;color:#fff;display:grid;place-items:center;border-radius:50%;font-size:30px;font-weight:300}
+.student-remove {position:absolute;right:14px;top:14px;color:#a1a1a1;width:18px;height:18px}
+.student-remove svg {height:16px;width:16px;stroke-width:1}
+.student-input {height:36px;display:block;width:100%;padding:0 0 2px;border:0;border-bottom:1px solid #b7b7b7;background:none;border-radius:0;outline:none;font-size:18px;line-height:24px;font-weight:300;color:#222;min-width:0}
+.student-input:last-child {border-bottom-color:#d1d1d1}
+.student-input:focus {border-bottom-color:#ff7635}
+.student-input::placeholder {color:#a5a5a5}
+.registration-next {position:absolute;z-index:40;right:6px;bottom:-25px;width:50px;height:50px;border-radius:50%;background:#ff7635;color:#fff;display:flex;align-items:flex-start;justify-content:center;padding-top:9px;box-shadow:0 -1px 2px #00000008}
+.registration-next svg {width:24px;height:24px;stroke-width:2}
+.browser-popover {position:absolute;z-index:50;right:12px;top:254px;background:#fff;border:1px solid #e4e6eb;border-radius:9px;box-shadow:0 5px 25px #0002;padding:6px;min-width:160px}
+.browser-popover[hidden] {display:none}
+.browser-popover button {display:block;padding:10px 12px;text-align:left;width:100%;font-size:15px;color:#425578;border-radius:5px}
+.browser-popover button:hover {background:#f1f5fb}
+.browser-article-page {height:100%;overflow:auto;padding:20px 16px 45px;background:#fff}
+.browser-article-page h1 {font-size:28px;line-height:34px;margin:20px 0}
+.browser-article-page p {font-size:18px;line-height:27px}
+.browser-back {font-size:16px;color:#ff650f}
+@media (max-width:750px) {.prototype-panel{display:none}.phone{width:min(100%,375px)}}
+
+.avatars-footer {justify-content:space-between}
+.history-chevron {display:flex;align-items:center;height:32px}
+.history-chevron svg {width:17px;height:17px;color:#8792ac}
+.notification-badge[hidden] {display:none}
+.native-notifications .browser-chrome {display:none}
+.notifications-page {height:100%;display:flex;flex-direction:column;background:#eceeef}
+.notifications-header {height:43px;flex-shrink:0;display:flex;align-items:center;gap:11px;padding:0 14px 5px 9px}
+.notifications-header button {height:32px;width:22px;color:#ff793a;display:grid;place-items:center}
+.notifications-header svg {width:23px;height:23px;transform:rotate(180deg);stroke-width:2.3}
+.notifications-header h1 {margin:0;font-size:20px;line-height:24px;font-weight:600;letter-spacing:-.15px}
+.notifications-list {overflow-y:auto;overscroll-behavior:contain;min-height:0;flex:1;padding-bottom:28px;scrollbar-width:none}
+.notification-row {position:relative;display:flex;align-items:flex-start;gap:10px;width:100%;padding:8px 9px;background:white;text-align:left;border-bottom:1px solid #f7f7f7;min-height:96px}
+.notification-type-icon {flex-shrink:0;width:45px;height:45px;border-radius:14px;display:grid;place-items:center;color:#424c4e}
+.notification-type-icon svg {width:27px;height:27px;stroke-width:1.3}
+.tone-blue {background:#e1f2ff}.tone-yellow {background:#fff8df}.tone-pink {background:#ffe6e3}.tone-green {background:#e2ffe9}
+.notification-copy {display:block;min-width:0;flex:1}
+.notification-row-heading {display:flex;align-items:flex-start;gap:7px;margin-bottom:3px}
+.notification-row-heading strong {font-size:15px;line-height:18px;font-weight:600;flex:1;min-width:0}
+.notification-row-heading time {font-size:12px;color:#a6a6a6;line-height:18px;white-space:nowrap;font-weight:400}
+.notification-preview,.notification-detail {display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px;line-height:20px;color:#81828e}
+.notification-detail {color:#77777c;padding-right:8px}
+.notification-unread {position:absolute;right:8px;bottom:14px;height:14px;min-width:14px;padding:0 3px;border-radius:50%;background:#ff7738;color:#fff;display:grid;place-items:center;font-size:11px}
+.notification-row:focus-visible {outline:2px solid #0783ff;outline-offset:-2px}
+@media (max-width:750px) {.workbench {padding:0}}
+
+.learning[hidden] {display:none}

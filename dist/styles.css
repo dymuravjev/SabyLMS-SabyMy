@@ -1,0 +1,186 @@
+@font-face {font-family:'SF UI Display';src:url('./assets/fonts/SFUIDisplay-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face {font-family:'SF UI Display';src:url('./assets/fonts/SFUIDisplay-Medium.ttf') format('truetype');font-weight:500;font-style:normal;font-display:swap}
+@font-face {font-family:'SF UI Display';src:url('./assets/fonts/SFUIDisplay-Semibold.ttf') format('truetype');font-weight:600;font-style:normal;font-display:swap}
+@font-face {font-family:'SF UI Display';src:url('./assets/fonts/SFUIDisplay-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap}
+:root {
+  --saby-blue: #0783ff;
+  --ink: #101114;
+  --muted: #8992aa;
+  --screen-bg: #ececee;
+  --card-width: 220px;
+  --card-height: 202px;
+  --card-gap: 8px;
+  --card-radius: 14px;
+  --heading-inset: 14px;
+  font-family: 'SF UI Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-synthesis: none;
+  color: var(--ink);
+  background: #f3f5f8;
+  -webkit-font-smoothing: antialiased;
+}
+* {box-sizing:border-box}
+html,body {margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
+button,input {font:inherit}
+button {border:0;cursor:pointer;color:inherit;background:none;padding:0;-webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible {outline:2px solid var(--saby-blue);outline-offset:3px}
+svg {display:block;width:24px;height:24px;flex-shrink:0}
+button,a {-webkit-touch-callout:none}
+.workbench {height:100dvh;display:grid;grid-template:minmax(0,1fr)/minmax(0,1fr);place-items:center;padding:16px;overflow:hidden;position:relative}
+.prototype-panel {position:absolute;right:24px;top:50%;transform:translateY(-50%);width:clamp(145px,calc((100vw - 375px)/2 - 48px),220px);color:#26324a;text-align:right}
+.state-controls {display:grid;gap:7px}
+.state-control {padding:13px 12px;display:flex;text-align:right;align-items:center;justify-content:flex-end;gap:12px;border-radius:12px;transition:background .2s,color .2s}
+.state-control:hover {background:#e9edf3}
+.state-control.active {background:#e4efff;color:#0876ec}
+.state-control strong {display:block;font-size:13px;font-weight:600}
+.state-control small {display:block;font-size:11px;color:#909aad;margin-top:4px}
+.key-hint {font-size:10px;border:1px solid #dce2ec;border-radius:4px;margin-right:auto;width:18px;height:20px;display:grid;place-items:center;color:#9da6b5;flex-shrink:0}
+.phone {width:375px;height:812px;background:var(--screen-bg);border-radius:27px;box-shadow:0 18px 65px #29334914,0 0 0 1px #fff;overflow:hidden;position:relative;display:flex;flex-direction:column;flex-shrink:0;isolation:isolate;transform:scale(var(--phone-scale,1));transform-origin:center}
+.status-bar {height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 18px 0 32px;background:var(--screen-bg);font-size:14px;font-weight:600}
+.status-icons {display:flex;gap:4px;align-items:center}
+.status-icons svg {width:16px;height:14px;stroke-width:1.8}
+.status-icons svg:last-child {width:24px}
+.app-scroll {overflow:clip;flex:1;min-height:0;overscroll-behavior:none;padding-bottom:12px;overflow-anchor:none}
+.app-scroll::-webkit-scrollbar {display:none}
+.app-header {height:71px;display:flex;align-items:center;justify-content:space-between;padding:0 11px 0 12px}
+.app-logo {display:flex;align-items:center;text-decoration:none;color:#0797ff;font-size:29px;letter-spacing:-1.5px;line-height:1}
+.app-logo .saby-symbol {width:25px;height:31px;margin-right:1px}
+.app-logo b {font-weight:700;color:#060709;letter-spacing:-1.5px}
+.header-actions {display:flex;align-items:center;gap:9px}
+.notification-button {position:relative;display:grid;place-items:center;width:35px;height:35px;background:#f3f3f5;border-radius:50%;color:#8693ac}
+.notification-button svg {height:24px;width:24px;stroke-width:1.2}
+.notification-badge {position:absolute;right:0;top:0;border-radius:50%;background:#ff7540;color:#fff;min-width:16px;height:16px;font-size:11px;display:grid;place-items:center;border:1px solid #ececee}
+.portrait {display:block;background-repeat:no-repeat;flex-shrink:0;border-radius:50%;background-color:#cddde6;background-image:url('./assets/interface-sprite.png');background-size:349.68px 831.62px;background-position:-299.71px -51.6px;width:40px;height:40px}
+.profile-button {width:40px;height:40px;border-radius:50%;overflow:hidden}
+.section-title {margin:13px 16px 12px;display:flex;align-items:center;justify-content:space-between;height:22px}
+.section-title h2,.learning-heading {font-size:18px;font-weight:500;line-height:normal;letter-spacing:normal}
+.section-title h2 {margin:0}
+.section-title button {height:16px;min-width:47px;border-radius:9px;background:#e1e1e5;display:flex;align-items:center;justify-content:center;color:#8592ad}
+.section-title button svg {width:23px;height:15px;transition:transform .2s;stroke-width:1.2}
+.section-title button[aria-expanded=false] svg {transform:rotate(180deg)}
+.quick-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 4px}
+.quick-grid[hidden] {display:none}
+.quick-tile {min-width:0;height:86px;background:#fff;border-radius:16px;text-align:left;position:relative;display:flex;flex-direction:column;padding:6px 10px;box-shadow:0 2px 4px #33384d03;overflow:hidden}
+.quick-tile.compact {height:72px}
+.quick-tile:active {background:#f7faff}
+.service-art {width:35px;height:35px;display:block;background-image:url('./assets/interface-sprite.png');background-repeat:no-repeat;background-size:338.75px 805.83px;flex-shrink:0;margin:0 0 1px -1px}
+.art-palm {background-position:-13.75px -158.3px}
+.art-cactus {background-position:-129.6px -158.3px}
+.art-document {background-position:-246.3px -158.3px}
+.art-medicine {background-position:-13.75px -245.8px}
+.art-plane {background-position:-129.6px -245.8px}
+.art-people {background-position:-246.3px -245.8px}
+.tile-title {font-size:15px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.tile-subtitle {font-size:11px;line-height:15px;color:#96969b;white-space:nowrap;letter-spacing:-.15px}
+.orange {color:#ff4e18}
+.pending-badge {position:absolute;right:6px;top:6px;font-size:11px;color:#7e89a2;background:#f3f4f7;border-radius:12px;padding:3px 6px}
+.learning {margin-top:15px;position:relative}
+.learning-header {height:33px;position:relative;overflow:hidden;margin-bottom:7px;isolation:isolate}
+.learning-heading {display:flex;align-items:baseline;gap:3px;position:absolute;top:0;white-space:nowrap;will-change:transform,opacity}
+.current-heading {left:0;transform:translateX(var(--heading-inset))}
+.more-heading {left:0;z-index:2;transform:translateX(225px)}
+.heading-count {min-width:2ch;font-variant-numeric:tabular-nums;text-align:left;font-size:15px;font-weight:400;color:#8992a9;letter-spacing:0}
+.course-rail {display:flex;gap:var(--card-gap);padding:0 4px 5px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;overscroll-behavior:contain;touch-action:pan-x;cursor:grab;position:relative;scroll-behavior:auto;user-select:none;-webkit-user-select:none}
+.course-rail::-webkit-scrollbar {display:none}
+.course-rail.dragging,.course-rail.dragging * {cursor:grabbing!important}
+.course-card {width:var(--card-width);min-width:var(--card-width);height:var(--card-height);flex-shrink:0;border-radius:var(--card-radius);background:#fff;padding:8px;display:grid;grid-template-rows:80px minmax(0,1fr) 34px;position:relative;overflow:hidden;box-shadow:0 2px 4px #26384c05;text-align:left;cursor:pointer;outline-offset:-3px!important}
+.course-cover {height:80px;position:relative;border-radius:8px;overflow:hidden;background:#eef3ff;flex-shrink:0}
+.cover-art {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.course-cover::after {content:'';position:absolute;inset:0;background:linear-gradient(180deg,#fff0 8%,#ffffff18 34%,#ffffffc7 100%);pointer-events:none}
+.course-title {font-size:16px;font-weight:400;line-height:20px;position:absolute;bottom:6px;left:8px;right:5px;margin:0;z-index:1;color:#080b13;letter-spacing:-.2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.course-cover[data-cover-tone=dark]::after {background:linear-gradient(180deg,#07101c00 8%,#07101c20 32%,#07101cce 100%)}
+.course-cover[data-cover-tone=dark] .course-title {color:#fff;text-shadow:0 1px 2px #0003}
+.course-details {padding-top:7px;min-height:0;overflow:hidden}
+.course-meta {display:flex;gap:7px;align-items:center;font-size:11px;line-height:14px;color:#8692ac;margin-bottom:5px}
+.teacher {display:flex;align-items:center;gap:6px;min-width:0}
+.teacher .portrait {height:29px;width:29px}
+.teacher-info {min-width:0}
+.teacher-name {display:block;font-size:14px;line-height:16px;color:#17191f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.teacher-role {display:block;font-size:11px;line-height:13px;color:#a0a0a4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.course-footer {align-self:end;height:34px;display:flex;align-items:flex-end;min-width:0}
+.progress-footer {display:block;width:100%;padding-bottom:1px}
+.progress-label {font-size:13px;line-height:18px;margin-bottom:5px}
+.progress-label .score {color:#8692ae}
+.progress-track {height:4px;background:#f0f1f3;border-radius:3px;overflow:hidden}
+.progress-fill {height:100%;background:#11a637;border-radius:3px 0 0 3px}
+.enroll-button {background:#0783ff;background:linear-gradient(180deg,#168bff,#047aff);border-radius:9px;height:31px;width:100%;color:white;font-size:14px;font-weight:400;box-shadow:inset 0 1px 0 #ffffff40;transition:filter .15s}
+.enroll-button:hover {filter:brightness(.97)}
+.metrics-body {display:flex;gap:15px;padding:7px 4px 0;align-items:flex-start;overflow:visible}
+.metric {min-width:0;display:flex;flex-direction:column;flex:1}
+.metric-value {display:flex;gap:6px;align-items:center;font-size:28px;line-height:31px;font-weight:400;letter-spacing:-.8px}
+.metric-value svg {width:18px;height:18px;color:#7291bb;stroke-width:1.5}
+.metric-label {color:#8692aa;font-size:11px;line-height:15px;white-space:nowrap}
+.avatars-footer {align-items:center;padding-left:3px}
+.avatar-stack {display:flex;align-items:center;padding-left:1px}
+.avatar-stack .portrait,.avatar-stack .more-avatars {border:1.5px solid #fff;height:32px;width:32px;margin-left:-3px}
+.avatar-stack .portrait:first-child {margin-left:0}
+.more-avatars {display:grid;place-items:center;background:#8a9bbf;color:#fff;border-radius:50%;font-size:12px;flex-shrink:0}
+.catalog-action {display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;height:32px;color:#1677e8;font-size:14px;text-align:left}
+.catalog-action svg {width:17px;height:17px;color:#8792ac}
+.vacation-card {display:block;position:relative;background:#f5fff8;border-radius:17px;text-align:left;margin:11px 4px 0;width:calc(100% - 8px);padding:13px 13px 11px;height:90px;box-shadow:0 2px 4px #283c2803}
+.vacation-title {display:flex;gap:5px;align-items:baseline;line-height:23px}
+.vacation-title strong {font-size:18px;font-weight:500}
+.vacation-title>span {font-size:13px;color:#969c9a}
+.vacation-date {display:block;font-size:25px;line-height:35px;font-weight:400;letter-spacing:-.4px;margin-top:4px}
+.panel-chevron {position:absolute;right:9px;top:12px;color:#c5cdca}
+.panel-chevron svg {width:21px;height:21px;stroke-width:2.2}
+.salary-card {margin:8px 4px 0;padding:15px 13px;height:59px;width:calc(100% - 8px);border-radius:16px;background:#f8f6ff;display:flex;align-items:center;gap:8px;font-size:18px;text-align:left;white-space:nowrap}
+.salary-card svg {width:20px;height:20px;color:#c7c5cd}
+.bottom-nav {display:grid;grid-template-columns:repeat(5,1fr);height:55px;flex-shrink:0;background:#fff;border-top:1px solid #e2e3e8;padding-top:7px}
+.nav-item {display:flex;flex-direction:column;align-items:center;gap:5px;color:#627790;font-size:10px;line-height:12px;min-width:0}
+.nav-item svg {height:23px;width:25px;stroke-width:1.15}
+.nav-item.active {color:#11161a}
+.home-indicator {height:27px;flex-shrink:0;background:#fff;display:flex;align-items:center;justify-content:center;padding-top:7px;padding-bottom:5px}
+.home-indicator span {height:5px;width:139px;background:#050505;border-radius:10px}
+.toast {position:absolute;z-index:25;bottom:94px;left:20px;right:20px;background:#25334ced;color:#fff;border-radius:12px;padding:12px 16px;font-size:13px;text-align:center;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;backdrop-filter:blur(10px)}
+.toast.visible {opacity:1;transform:translateY(0)}
+.sheet-backdrop {position:absolute;inset:0;background:#17223955;z-index:20;display:flex;align-items:flex-end;backdrop-filter:blur(2px)}
+.sheet-backdrop[hidden] {display:none}
+.bottom-sheet {max-height:80%;width:100%;background:#fff;border-radius:24px 24px 0 0;padding:26px 0 0;overflow:hidden;display:flex;flex-direction:column;position:relative;box-shadow:0 -10px 40px #18223a1a;animation:sheet-in .22s ease-out;outline:none!important}
+#sheet-content {padding:0 20px 30px;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+@keyframes sheet-in {from{transform:translateY(50px);opacity:.5}to{transform:translateY(0);opacity:1}}
+.sheet-handle {position:absolute;width:35px;height:4px;background:#d8dce5;top:9px;left:calc(50% - 17.5px);border-radius:4px}
+.sheet-close {position:absolute;right:13px;top:17px;border-radius:50%;background:#f3f5f8;padding:6px;color:#8a93a5;z-index:2}
+.sheet-close svg {height:17px;width:17px}
+.bottom-sheet h2 {font-size:22px;font-weight:600;letter-spacing:-.4px;margin:10px 28px 18px 0;line-height:1.25}
+.bottom-sheet p {font-size:14px;color:#8691a7;line-height:1.5;margin:10px 0 20px}
+.bottom-sheet .sheet-label {font-size:11px;letter-spacing:1px;color:#8a98ae;text-transform:uppercase;margin-bottom:8px}
+.sheet-cover {height:120px;border-radius:12px;overflow:hidden;position:relative;margin:0 0 15px}
+.sheet-cover svg {width:100%;height:100%}
+.sheet-primary {display:block;width:100%;border-radius:11px;background:#0783ff;color:#fff;padding:13px 16px;font-size:15px;margin-top:18px}
+.sheet-teacher {font-size:14px;color:#33415a;display:flex;align-items:center;gap:8px;margin-top:15px}
+.sheet-teacher .portrait {width:32px;height:32px}
+.sheet-list {list-style:none;padding:0;margin:0}
+.sheet-list li+li {border-top:1px solid #f0f2f6}
+.sheet-list button {width:100%;text-align:left;padding:13px 0;display:flex;gap:12px;align-items:center}
+.sheet-list .list-icon {width:35px;height:35px;border-radius:10px;background:#edf4ff;color:#1581ec;display:grid;place-items:center;flex-shrink:0}
+.sheet-list .list-icon svg {width:22px;height:22px}
+.sheet-list strong {font-size:14px;font-weight:400;display:block;line-height:19px}
+.sheet-list small {font-size:11px;display:block;color:#8b97ad;line-height:15px;margin-top:2px}
+.sheet-list .list-chevron {margin-left:auto;color:#a1acbd}
+.sheet-list .list-chevron svg {width:16px;height:16px}
+.catalog-search {width:100%;padding:11px 12px;border:1px solid #e4e8ef;border-radius:10px;font-size:14px;outline:none;background:#f8faff;margin-bottom:12px}
+.catalog-search:focus {border-color:#85bdff}
+.empty-state {font-size:14px;color:#8b97ad;padding:20px 0;text-align:center}
+.form-field {display:block;margin:14px 0;color:#7e8ba3;font-size:12px}
+.form-field input {display:block;width:100%;border:1px solid #e1e7f0;border-radius:10px;background:#f8faff;padding:11px 12px;margin-top:6px;color:#29354d;min-width:0}
+button:disabled {cursor:default;opacity:1}
+button:disabled:active {background-color:inherit}
+@media (max-width:750px) {
+  .prototype-panel {display:none}
+  .workbench {padding:0;min-height:100dvh;background:var(--screen-bg)}
+  .phone {width:min(100%,430px);height:100dvh;min-height:0;border-radius:0;box-shadow:none;transform:none}
+  .home-indicator {padding-bottom:max(5px,env(safe-area-inset-bottom));height:max(27px,env(safe-area-inset-bottom))}
+}
+@media (max-width:750px) and (max-height:740px) {
+  .app-header {height:54px}
+  .section-title {margin-top:8px;margin-bottom:8px}
+  .quick-tile {height:72px}
+  .quick-tile.compact {height:62px}
+  .learning {margin-top:11px}
+}
+@media (max-width:750px) and (max-height:620px) {
+  .quick-actions {display:none}
+}
+@media (prefers-reduced-motion:reduce) {*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+.learning-heading[hidden] {display:none}
